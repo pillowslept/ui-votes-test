@@ -37,7 +37,6 @@ export default {
 
 .description {
   width: 70%;
-  width: 733px;
   font-size: 30px;
   font-weight: 300;
   text-align: left;
@@ -46,5 +45,28 @@ export default {
 
 .button-action {
   padding: 10px 25px;
+}
+
+@media (max-width: 1100px) {
+  .description {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .button-action {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .description {
+    font-size: 14px;
+  }
+
+  .button-action {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
 }
 </style>

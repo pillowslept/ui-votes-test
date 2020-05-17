@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <MainBanner />
-    <div class="components">
+    <div class="content">
       <Message />
       <div class="title-separator">Votes</div>
       <CardList />
@@ -31,9 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.components {
-  padding: 2rem 10rem;
-
+.content {
   .title-separator {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -41,6 +39,15 @@ export default {
     font-size: 40px;
     color: #333333;
     font-weight: 300;
+  }
+}
+
+@media (max-width: 950px) {
+  .content {
+    .title-separator {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
   }
 }
 

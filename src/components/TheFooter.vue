@@ -48,4 +48,14 @@ export default {
     cursor: pointer;
   }
 }
+
+@media (max-width: 910px) {
+  .footer {
+    flex-direction: column;
+  }
+
+  .left-side {
+    margin-bottom: 1rem;
+  }
+}
 </style>

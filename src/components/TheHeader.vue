@@ -44,4 +44,23 @@ export default {
   }
 }
 
+@media (max-width: 950px) {
+  .nav-container {
+    flex-wrap: wrap;
+    margin-top: 0.1rem;
+
+    .title {
+      font-size: 25px;
+    }
+  }
+
+  a {
+    margin-right: 1rem;
+  }
+
+  img {
+    width: 22px;
+  }
+}
+
 </style>

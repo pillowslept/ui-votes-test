@@ -57,6 +57,7 @@ $icon-size: 40px;
 $default-margin: 1rem;
 
 .person-card {
+  background-size: 100% auto;
   min-height: 550px;
   display: flex;
   flex-direction: column;
@@ -146,6 +147,7 @@ $default-margin: 1rem;
   margin-top: 2rem;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   .button-vote {
     cursor: pointer;
@@ -174,4 +176,31 @@ $default-margin: 1rem;
   border-width: 1px;
 }
 
+@media (max-width: 1100px) {
+  .card-content {
+    .top-data {
+      .name {
+        font-size: 35px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .results {
+    img {
+      width: 25px;
+    }
+  }
+}
+
+@media (max-width: 340px) {
+  .actions {
+    margin-top: 1rem;
+
+    .button-action {
+      margin-top: 1rem;
+    }
+  }
+}
 </style>

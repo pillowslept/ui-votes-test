@@ -61,4 +61,20 @@ export default {
   width: calc(50% - 20px);
   margin-bottom: 40px;
 }
+
+@media (max-width: 700px) {
+  .cards {
+    justify-content: center;
+  }
+
+  .card {
+    width: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  .card {
+    width: 100%;
+  }
+}
 </style>

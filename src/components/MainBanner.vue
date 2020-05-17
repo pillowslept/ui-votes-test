@@ -32,7 +32,7 @@ export default {
 .main-banner {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 35%),
     url('../assets/people/pope.png') no-repeat;
-  background-size: cover;
+  background-size: 100% auto;
 }
 
 .closing {
@@ -63,5 +63,18 @@ export default {
   }
 }
 
+@media (max-width: 750px) {
+  .closing {
+    margin-top: 0.2rem;
+
+    .in {
+      font-size: 10px;
+    }
+
+    .days {
+      font-size: 25px;
+    }
+  }
+}
 
 </style>

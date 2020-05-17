@@ -55,4 +55,28 @@ a {
   background-color: rgba(255,255,255,0.14901960784313725);
   border: 3px solid #333333;
 }
+
+@media (max-width: 1200px) {
+  .content {
+    padding: 1rem 8rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .content {
+    padding: 1rem 6rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    padding: 1rem 4rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .content {
+    padding: 1rem 1rem;
+  }
+}
 </style>

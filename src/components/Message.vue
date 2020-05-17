@@ -48,7 +48,6 @@ export default {
 
 .description {
   width: 70%;
-  width: 733px;
   font-size: 15px;
   font-weight: 300;
   text-align: left;
@@ -56,5 +55,43 @@ export default {
 
 img {
   cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .title {
+    font-size: 15px;
+
+    .strong {
+      font-size: 25px;
+    }
+  }
+
+  .description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 800px) {
+  .title {
+    font-size: 12px;
+
+    .strong {
+      font-size: 18px;
+    }
+  }
+
+  .description {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .message {
+    flex-direction: column;
+  }
+
+  .description {
+    width: 100%;
+  }
 }
 </style>
