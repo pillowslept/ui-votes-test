@@ -1,36 +1,45 @@
 <template>
-  <div class="message">
-    <div class="title">
-      <span>
-        Speak out. Be heard.
-      </span>
-      <span class="strong">
-        Be counted
-      </span>
+  <div class="message flex-between-center">
+    <div class="text-container flex-between-center">
+      <div class="title">
+        <span>
+          Speak out. Be heard.
+        </span>
+        <span class="strong">
+          Be counted
+        </span>
+      </div>
+      <div class="description">
+        <span>
+          Rule of Thumb is a crowd sourced court of public opinion where anyone and everyone can speak out and speak freely. It’s easy: You share your opinion, we analyze and put the data in a public report.
+        </span>
+      </div>
     </div>
-    <div class="description">
-      <span>
-        Rule of Thumb is a crowd sourced court of public opinion where anyone and everyone can speak out and speak freely. It’s easy: You share your opinion, we analyze and put the data in a public report.
-      </span>
-    </div>
-    <img alt="Close icon" src="../assets/icons/close.png" >
+    <BaseImage class="pointer" title="Close" icon="close" />
   </div>
 </template>
 
 <script>
+import BaseImage from '@/components/BaseImage';
+
 export default {
   name: 'Message',
+  components: {
+    BaseImage,
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/colors.scss';
+
 .message {
   padding: 1rem;
   background-color: #ebebeb;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #333333;
+}
+
+.text-container {
+  color: $main-color;
 }
 
 .title {
@@ -51,10 +60,6 @@ export default {
   font-size: 15px;
   font-weight: 300;
   text-align: left;
-}
-
-img {
-  cursor: pointer;
 }
 
 @media (max-width: 1200px) {
@@ -86,7 +91,7 @@ img {
 }
 
 @media (max-width: 700px) {
-  .message {
+  .text-container {
     flex-direction: column;
 
     .title {
@@ -104,7 +109,7 @@ img {
 }
 
 @media (max-width: 500px) {
-  .message {
+  .text-container {
     .title {
       width: 90%;
     }

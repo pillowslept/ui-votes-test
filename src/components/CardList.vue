@@ -24,6 +24,7 @@ export default {
       mark: {
         name: 'Mark Zuckerberg',
         area: 'Business',
+        description: 'Thank you for voting!',
         likes: 36,
         dislikes: 64,
         cover: 'mark.png',

@@ -10,7 +10,7 @@
       </div>
       <div class="opinion">
         <div class="wiki">
-          <img alt="Wiki icon" src="../assets/icons/wiki.png" >
+          <BaseImage title="Wiki" icon="wiki" />
           <a href="#">More information</a>
         </div>
         <div class="veredict">
@@ -19,19 +19,24 @@
       </div>
     </div>
     <div class="actions">
-      <div class="action primary">
-        <img alt="Up" src="../assets/icons/thumbs-up.png" >
+      <div class="action pointer primary">
+        <BaseImage title="Up" icon="thumbs-up" />
       </div>
-      <div class="action secondary">
-        <img alt="Down" src="../assets/icons/thumbs-down.png" >
+      <div class="action pointer secondary">
+        <BaseImage title="Down" icon="thumbs-down" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import BaseImage from '@/components/BaseImage';
+
 export default {
   name: 'MainCard',
+  components: {
+    BaseImage,
+  }
 }
 </script>
 
@@ -88,7 +93,6 @@ export default {
   display: flex;
 
   .action {
-    cursor: pointer;
     width: 50%;
     padding: 0.7rem;
   }

@@ -1,28 +1,32 @@
 <template>
-  <div class="nav-container">
+  <div class="nav-container flex-between-center">
     <span class="title">Rule of thumb.</span>
     <div class="menu-actions">
       <router-link to="/past-trials">Past trials</router-link>
       <router-link to="/about">How It Works</router-link>
       <router-link to="/login">Log In / Sign Up</router-link>
-      <img alt="Search icon" src="../assets/icons/search.png" >
+      <BaseImage class="pointer" title="Search" icon="search" />
     </div>
   </div>
 </template>
 
 <script>
+import BaseImage from '@/components/BaseImage';
+
 export default {
   name: 'TheHeader',
+  components: {
+    BaseImage,
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/colors.scss';
+
 .nav-container {
   margin-top: 1.2rem;
-  color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  color: $white-color;
 
   .title {
     font-size: 32px;
@@ -36,11 +40,7 @@ export default {
   align-items: center;
 
   a {
-    color: #ffffff;
-  }
-
-  img {
-    cursor: pointer;
+    color: $white-color;
   }
 }
 

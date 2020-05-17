@@ -3,7 +3,7 @@
     <div class="card-content">
       <div class="top-data">
         <div class="actual-vote" :class="voteColor">
-          <img alt="Up" src="../assets/icons/thumbs-up.png" >
+          <BaseImage title="Actual vote" :icon="isLiked ? 'thumbs-up' : 'thumbs-down'" />
         </div>
         <div class="name">
           {{ person.name }}
@@ -14,36 +14,47 @@
           <b>1 Month ago</b> in {{ person.area }}
         </div>
         <div class="description">
-          Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aen
+          <span v-if="person.description">{{ person.description }}</span>
+          <span v-else>Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aen</span>
         </div>
         <div class="actions">
-          <div class="active button-vote primary">
-            <img alt="Up" src="../assets/icons/thumbs-up.png" >
-          </div>
-          <div class="button-vote secondary">
-            <img alt="Down" src="../assets/icons/thumbs-down.png" >
-          </div>
-          <div class="button-action">Vote now</div>
+          <template v-if="person.description">
+            <div class="button-action">Vote again</div>
+          </template>
+          <template v-else>
+            <div class="active button-vote pointer primary">
+              <BaseImage title="Up" icon="thumbs-up" />
+            </div>
+            <div class="button-vote pointer secondary">
+              <BaseImage title="Down" icon="thumbs-down" />
+            </div>
+            <div class="button-action">Vote now</div>
+          </template>
         </div>
       </div>
     </div>
     <div class="results">
       <div class="likes primary flex-center" v-bind:style="{ width: person.likes + '%' }">
-        <img alt="Up" src="../assets/icons/thumbs-up.png" > {{ person.likes }}%
+        <BaseImage title="Up" icon="thumbs-up" /> {{ person.likes }}%
       </div>
       <div class="dislikes secondary flex-center" v-bind:style="{ width: person.dislikes + '%' }">
-        <img alt="Down" src="../assets/icons/thumbs-down.png" > {{ person.dislikes }}%
+        <BaseImage title="Down" icon="thumbs-down" /> {{ person.dislikes }}%
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import BaseImage from '@/components/BaseImage';
+
 export default {
   name: 'CardListItem',
   computed: {
+    isLiked() {
+      return ((100 * this.person.likes) / (this.person.likes + this.person.dislikes)) > 50;
+    },
     voteColor() {
-      return ((100 * this.person.likes) / (this.person.likes + this.person.dislikes)) > 50 ? 'primary' : 'secondary';
+      return this.isLiked ? 'primary' : 'secondary';
     },
     backgroundUrl() {
       return `background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 35%), url('${require(`@/assets/people/${this.person.cover}`)}') no-repeat`;
@@ -51,11 +62,16 @@ export default {
   },
   props: {
     person: Object,
+  },
+  components: {
+    BaseImage,
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/colors.scss';
+
 $icon-size: 40px;
 $default-margin: 1rem;
 
@@ -91,7 +107,7 @@ $default-margin: 1rem;
       width: calc(100% - #{$icon-size});
       margin-left: 1rem;
       text-align: left;
-      color: #ffffff;
+      color: $white-color;
       font-weight: 400;
     }
   }
@@ -103,14 +119,14 @@ $default-margin: 1rem;
     text-align: left;
 
     .subtitle {
-      color: #ffffff;
+      color: $white-color;
       font-size: 13px;
     }
 
     .description {
       margin-top: 1rem;
       font-size: 16px;
-      color: #ffffff;
+      color: $white-color;
       font-weight: 300;
     }
   }
@@ -122,7 +138,7 @@ $default-margin: 1rem;
   width: 100%;
   margin-top: 3rem;
   font-size: 29px;
-  color: #ffffff;
+  color: $white-color;
   font-weight: 300;
   opacity: 0.9;
 
@@ -153,7 +169,6 @@ $default-margin: 1rem;
   flex-wrap: wrap;
 
   .button-vote {
-    cursor: pointer;
     width: $icon-size;
     padding: 3px 0px;
     text-align: center;
@@ -165,7 +180,7 @@ $default-margin: 1rem;
     }
 
     &.active {
-      border: 2px solid #fffffF;
+      border: 2px solid $white-color;
     }
 
   }
@@ -174,8 +189,8 @@ $default-margin: 1rem;
 .button-action {
   font-size: 24px;
   padding: 0.4rem 1rem;
-  color: #ffffff;
-  border-color: #ffffff;
+  color: $white-color;
+  border-color: $white-color;
   border-width: 1px;
 }
 
@@ -190,6 +205,10 @@ $default-margin: 1rem;
 }
 
 @media (max-width: 500px) {
+  .person-card {
+    min-height: 500px;
+  }
+
   .results {
     img {
       width: 25px;

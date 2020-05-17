@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer flex-between-center">
     <div class="left-side">
       <router-link to="/terms-and-conditions">Terms and Conditions</router-link>
       <router-link to="/privacy-policy">Privacy policy</router-link>
@@ -7,26 +7,30 @@
     </div>
     <div class="right-side">
       <span>Follow us</span>
-      <img alt="Twitter icon" src="../assets/icons/twitter.png" >
-      <img alt="Facebook icon" src="../assets/icons/facebook.png" >
+      <BaseImage class="pointer" title="Twitter" icon="twitter" />
+      <BaseImage class="pointer" title="Facebook" icon="facebook" />
     </div>
   </div>
 </template>
 
 <script>
+import BaseImage from '@/components/BaseImage';
+
 export default {
   name: 'TheFooter',
+  components: {
+    BaseImage,
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/colors.scss';
+
 .footer {
   font-size: 12px;
-  color: #333333;
+  color: $main-color;
   font-weight: 300;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-top: 1px dashed #979797;
   padding: 2rem 0px;
   margin-top: 1rem;
@@ -48,7 +52,6 @@ export default {
 
   img {
     margin-left: 1.5rem;
-    cursor: pointer;
   }
 }
 

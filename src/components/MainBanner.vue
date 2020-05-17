@@ -29,6 +29,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/colors.scss';
+
 .main-banner {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 35%),
     url('../assets/people/pope.png') no-repeat;
@@ -43,7 +45,7 @@ export default {
   .in {
     text-transform: uppercase;
     font-size: 13px;
-    color: #ffffff;
+    color: $white-color;
     text-align: right;
     width: 30%;
     display: flex;

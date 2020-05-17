@@ -31,13 +31,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/colors.scss';
+$margin: 2rem;
+$small-margin: 0.5rem;
+
 .content {
   .title-separator {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: $margin;
+    margin-bottom: $margin;
     text-align: left;
     font-size: 40px;
-    color: #333333;
+    color: $main-color;
     font-weight: 300;
   }
 }
@@ -46,8 +50,8 @@ export default {
   .content {
     .title-separator {
       font-size: 30px;
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin-top: $small-margin;
+      margin-bottom: $small-margin;
     }
   }
 }

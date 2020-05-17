@@ -1,6 +1,6 @@
 <template>
   <div class="submit">
-    <div class="informaiton-content">
+    <div class="informaiton-content flex-between-center">
       <div class="description">
         Is there anyone else you would want us to add?
       </div>
@@ -19,6 +19,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/colors.scss';
+
 .submit {
   background: url('../assets/icons/banner-layer.png') no-repeat;
   background-position: center;
@@ -27,11 +29,8 @@ export default {
 
 .informaiton-content {
   padding: 0.5rem 1rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 100%;
-  background-color: #ffffff;
+  background-color: $white-color;
   opacity: 0.8;
 }
 
@@ -40,7 +39,7 @@ export default {
   font-size: 30px;
   font-weight: 300;
   text-align: left;
-  color: #333333;
+  color: $main-color;
 }
 
 .button-action {
