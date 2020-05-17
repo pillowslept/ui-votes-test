@@ -27,7 +27,7 @@ export default {
     SubmitPerson,
     TheFooter,
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
