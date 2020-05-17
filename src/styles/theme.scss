@@ -36,3 +36,11 @@ a {
   justify-content: space-between;
   align-items: center;
 }
+
+.transition-enter-active, .transition-leave-active {
+  transition: opacity .5s;
+}
+
+.transition-enter, .transition-leave-to {
+  opacity: 0;
+}

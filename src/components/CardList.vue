@@ -1,49 +1,24 @@
 <template>
   <div class="cards">
-    <CardListItem class="card" v-bind:person="kanye" />
-    <CardListItem class="card" v-bind:person="mark" />
-    <CardListItem class="card" v-bind:person="cristina" />
-    <CardListItem class="card" v-bind:person="malala" />
+    <CardListItem
+      v-for="person in persons"
+      v-bind:key="person.id"
+      class="card"
+      v-bind:person="person"
+    />
   </div>
 </template>
 
 <script>
 import CardListItem from '@/components/CardListItem';
+import personData from '@/json/data.json';
 
 export default {
   name: 'CardList',
   data () {
     return {
-      kanye: {
-        name: 'Kanye West',
-        area: 'Entertainment',
-        likes: 64,
-        dislikes: 36,
-        cover: 'kanye.png',
-      },
-      mark: {
-        name: 'Mark Zuckerberg',
-        area: 'Business',
-        description: 'Thank you for voting!',
-        likes: 36,
-        dislikes: 64,
-        cover: 'mark.png',
-      },
-      cristina: {
-        name: 'Cristina Fernández de Kirchner',
-        area: 'Politics',
-        likes: 36,
-        dislikes: 64,
-        cover: 'cristina.png',
-      },
-      malala: {
-        name: 'Malala Yousafzai',
-        area: 'Entertaimnent',
-        likes: 64,
-        dislikes: 36,
-        cover: 'malala.png',
-      },
-    }
+      persons: personData,
+    };
   },
   components: {
     CardListItem,

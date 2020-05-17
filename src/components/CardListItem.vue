@@ -14,31 +14,57 @@
           <b>1 Month ago</b> in {{ person.area }}
         </div>
         <div class="description">
-          <span v-if="person.description">{{ person.description }}</span>
-          <span v-else>Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aen</span>
+          <transition name="transition">
+            <span key="thanks"
+              v-if="voted"
+            >
+              Thank you for voting!
+            </span>
+            <span key="description"
+              v-else
+            >
+              Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aen
+            </span>
+          </transition>
         </div>
         <div class="actions">
-          <template v-if="person.description">
-            <div class="button-action">Vote again</div>
+          <template v-if="voted">
+            <div
+              class="button-action voted-button"
+              @click="voted = false;"
+            >
+              Vote again
+            </div>
           </template>
           <template v-else>
-            <div class="active button-vote pointer primary">
+            <div
+              class="button-vote pointer primary"
+              :class="{ 'active' : voteType === 'like' }"
+              @click="setVoteType('like')" >
               <BaseImage title="Up" icon="thumbs-up" />
             </div>
-            <div class="button-vote pointer secondary">
+            <div
+              class="button-vote pointer secondary"
+              :class="{ 'active' : voteType === 'dislike' }"
+              @click="setVoteType('dislike')">
               <BaseImage title="Down" icon="thumbs-down" />
             </div>
-            <div class="button-action">Vote now</div>
+            <div
+              class="button-action"
+              @click="addVote"
+            >
+              Vote now
+            </div>
           </template>
         </div>
       </div>
     </div>
     <div class="results">
-      <div class="likes primary flex-center" v-bind:style="{ width: person.likes + '%' }">
-        <BaseImage title="Up" icon="thumbs-up" /> {{ person.likes }}%
+      <div class="likes primary flex-center" v-bind:style="{ width: likesPercent + '%' }">
+        <BaseImage title="Up" icon="thumbs-up" /> {{ likesPercent }}%
       </div>
-      <div class="dislikes secondary flex-center" v-bind:style="{ width: person.dislikes + '%' }">
-        <BaseImage title="Down" icon="thumbs-down" /> {{ person.dislikes }}%
+      <div class="dislikes secondary flex-center" v-bind:style="{ width: dislikesPercent + '%' }">
+        <BaseImage title="Down" icon="thumbs-down" /> {{ dislikesPercent }}%
       </div>
     </div>
   </div>
@@ -46,12 +72,37 @@
 
 <script>
 import BaseImage from '@/components/BaseImage';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'CardListItem',
+  data() {
+    return {
+      voteType: '',
+      voted: false,
+    };
+  },
   computed: {
+    userVotes() {
+      return this.getVotes[this.person.id] || {};
+    },
+    userLikes() {
+      return this.userVotes.likes || 0;
+    },
+    userDislikes() {
+      return this.userVotes.dislikes || 0;
+    },
+    dislikes() {
+      return this.person.dislikes + this.userDislikes;
+    },
+    likes() {
+      return this.person.likes + this.userLikes;
+    },
+    totalVotes() {
+      return this.likes + this.dislikes;
+    },
     isLiked() {
-      return ((100 * this.person.likes) / (this.person.likes + this.person.dislikes)) > 50;
+      return ((100 * this.likes) / this.totalVotes) >= 50;
     },
     voteColor() {
       return this.isLiked ? 'primary' : 'secondary';
@@ -59,9 +110,29 @@ export default {
     backgroundUrl() {
       return `background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 80%), url('${require(`@/assets/people/${this.person.cover}`)}') no-repeat`;
     },
+    likesPercent() {
+      return ((100 * this.likes) / this.totalVotes).toFixed(1);
+    },
+    dislikesPercent() {
+      return ((100 * this.dislikes) / this.totalVotes).toFixed(1);
+    },
+    ...mapGetters(['getVotes'])
   },
   props: {
     person: Object,
+  },
+  methods: {
+    setVoteType(type) {
+      this.voteType = type;
+    },
+    addVote() {
+      if (this.voteType) {
+        const action = this.voteType === 'like' ? 'addLike' : 'addDislike';
+        this.$store.dispatch(action, this.person.id);
+        this.voteType = '';
+        this.voted = true;
+      }
+    }
   },
   components: {
     BaseImage,
