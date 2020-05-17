@@ -65,8 +65,8 @@ export default {
   },
   components: {
     BaseImage,
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -163,6 +163,14 @@ $default-margin: 1rem;
   align-items: center;
 }
 
+.button-action {
+  font-size: 24px;
+  padding: 0.4rem 1rem;
+  color: $white-color;
+  border-color: $white-color;
+  border-width: 1px;
+}
+
 .actions {
   margin-top: 2rem;
   display: flex;
@@ -185,14 +193,6 @@ $default-margin: 1rem;
     }
 
   }
-}
-
-.button-action {
-  font-size: 24px;
-  padding: 0.4rem 1rem;
-  color: $white-color;
-  border-color: $white-color;
-  border-width: 1px;
 }
 
 @media (max-width: 1100px) {
