@@ -7,6 +7,7 @@
     <div class="closing">
       <div class="in">
         Closing in
+        <div class="triangle"></div>
       </div>
       <div class="days">
         <b>22</b> days
@@ -43,6 +44,7 @@ export default {
   font-weight: 400;
 
   .in {
+    position: relative;
     text-transform: uppercase;
     font-size: 13px;
     color: $white-color;
@@ -53,6 +55,16 @@ export default {
     align-items: center;
     padding-right: 1rem;
     background-color: rgba(112,112,112,0.30196078431372547);
+
+    .triangle {
+      position: absolute;
+      right: -8px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 0 5px 8.7px;
+      border-color: transparent transparent transparent rgba(112,112,112,0.30196078431372547);
+    }
   }
 
   .days {
