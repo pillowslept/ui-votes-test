@@ -2,7 +2,7 @@
   <div class="person-card" :style="backgroundUrl">
     <div class="card-content">
       <div class="top-data">
-        <div class="actual-vote primary">
+        <div class="actual-vote" :class="voteColor">
           <img alt="Up" src="../assets/icons/thumbs-up.png" >
         </div>
         <div class="name">
@@ -42,6 +42,9 @@
 export default {
   name: 'CardListItem',
   computed: {
+    voteColor() {
+      return ((100 * this.person.likes) / (this.person.likes + this.person.dislikes)) > 50 ? 'primary' : 'secondary';
+    },
     backgroundUrl() {
       return `background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 35%), url('${require(`@/assets/people/${this.person.cover}`)}') no-repeat`;
     },
