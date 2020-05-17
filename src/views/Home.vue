@@ -15,7 +15,7 @@
 import MainBanner from '@/components/MainBanner';
 import Message from '@/components/Message';
 import CardList from '@/components/CardList';
-import SubmitPerson from '@/components/SubmitPerson.vue';
+import SubmitPerson from '@/components/SubmitPerson';
 import TheFooter from '@/components/TheFooter';
 
 export default {

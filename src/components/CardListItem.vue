@@ -1,5 +1,5 @@
 <template>
-  <div class="person-card">
+  <div class="person-card" :style="backgroundUrl">
     <div class="card-content">
       <div class="actual-vote primary">
         <img alt="Up" src="../assets/icons/thumbs-up.png" >
@@ -40,9 +40,9 @@
 export default {
   name: 'CardListItem',
   computed: {
-    backgroundCover() {
-      return `background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 35%), url('${this.person.cover}') no-repeat`;
-    }
+    backgroundUrl() {
+      return `background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 35%), url('${require(`@/assets/people/${this.person.cover}`)}') no-repeat`;
+    },
   },
   props: {
     person: Object,
@@ -51,20 +51,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$icon-size: 40px;
 
 .person-card {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 35%),
-    url('../assets/people/mark.png') no-repeat;
-  width: 50%;
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .card-content {
   display: flex;
   align-items: flex-start;
-  margin-top: 12rem;
 
   .actual-vote {
-    width: 40px;
+    width: $icon-size;
     padding: 3px 0px;
 
     img {
@@ -74,6 +75,7 @@ export default {
   }
 
   .information {
+    width: calc(100% - $icon-size);
     margin-left: 1rem;
     text-align: left;
 
@@ -99,6 +101,8 @@ export default {
 
 .results {
   display: flex;
+  align-self: flex-end;
+  width: 100%;
   margin-top: 3rem;
   font-size: 29px;
   color: #ffffff;
@@ -132,7 +136,7 @@ export default {
 
   .button-vote {
     cursor: pointer;
-    width: 40px;
+    width: $icon-size;
     padding: 3px 0px;
     text-align: center;
     margin-right: 1rem;

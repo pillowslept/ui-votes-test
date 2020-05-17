@@ -19,28 +19,28 @@ export default {
         area: 'Entertainment',
         likes: 64,
         dislikes: 36,
-        cover: '../assets/people/kanye.png',
+        cover: 'kanye.png',
       },
       mark: {
         name: 'Mark Zuckerberg',
         area: 'Business',
         likes: 36,
         dislikes: 64,
-        cover: '../assets/people/mark.png',
+        cover: 'mark.png',
       },
       cristina: {
         name: 'Cristina Fernández de Kirchner',
         area: 'Politics',
         likes: 36,
         dislikes: 64,
-        cover: '../assets/people/cristina.png',
+        cover: 'cristina.png',
       },
       malala: {
         name: 'Malala Yousafzai',
         area: 'Entertaimnent',
         likes: 64,
         dislikes: 36,
-        cover: '../assets/people/malala.png',
+        cover: 'malala.png',
       },
     }
   },
@@ -58,7 +58,7 @@ export default {
 }
 
 .card {
-  width: 48%;
-  margin-bottom: 1rem;
+  width: calc(50% - 20px);
+  margin-bottom: 40px;
 }
 </style>
