@@ -1,32 +1,59 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
 
-<style>
+<script>
+export default {
+  name: 'App',
+  components: {
+  }
+}
+</script>
+
+<style lang="scss">
+body {
+  margin: 0;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+  font-family: "Lato";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.content {
+  padding: 2rem 10rem;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.primary {
+  background-color: rgba(28,187,180,0.9019607843137255);
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.secondary {
+  background-color: rgba(255,173,29,0.9019607843137255);
+}
+
+a {
+  text-decoration: none;
+  margin-right: 3rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.button-action {
+  cursor: pointer;
+  padding: 1rem 2rem;
+  font-size: 20px;
+  color: #333333;
+  font-weight: 400;
+  text-align: center;
+  background-color: rgba(255,255,255,0.14901960784313725);
+  border: 3px solid #333333;
 }
 </style>
