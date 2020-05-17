@@ -56,7 +56,7 @@ export default {
 }
 
 .description {
-  width: 70%;
+  width: 75%;
   font-size: 15px;
   font-weight: 300;
   text-align: left;

@@ -57,7 +57,7 @@ export default {
       return this.isLiked ? 'primary' : 'secondary';
     },
     backgroundUrl() {
-      return `background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 35%), url('${require(`@/assets/people/${this.person.cover}`)}') no-repeat`;
+      return `background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 80%), url('${require(`@/assets/people/${this.person.cover}`)}') no-repeat`;
     },
   },
   props: {
