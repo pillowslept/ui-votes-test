@@ -36,7 +36,54 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "semi": [
+        2,
+        "always"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "no-var": "error",
+      "eqeqeq": "error",
+      "no-trailing-spaces": "warn",
+      "no-multi-spaces": "error",
+      "indent": [
+        "warn",
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "array-bracket-spacing": [
+        "error",
+        "never"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "key-spacing": [
+        "error",
+        {
+          "afterColon": true
+        }
+      ],
+      "keyword-spacing": [
+        "error",
+        {
+          "before": true,
+          "after": true
+        }
+      ],
+      "max-len": [
+        "warn",
+        {
+          "code": 120
+        }
+      ]
+    }
   },
   "browserslist": [
     "> 1%",

@@ -25,7 +25,7 @@ export default {
     TheHeader,
     MainCard,
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

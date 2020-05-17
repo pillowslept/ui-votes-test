@@ -48,7 +48,7 @@ export default {
   components: {
     CardListItem,
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

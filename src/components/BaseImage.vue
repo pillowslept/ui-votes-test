@@ -14,7 +14,7 @@ export default {
       return require(`@/assets/icons/${this.icon}.png`);
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

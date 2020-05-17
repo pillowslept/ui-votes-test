@@ -37,7 +37,7 @@ export default {
   components: {
     BaseImage,
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
