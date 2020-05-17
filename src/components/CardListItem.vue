@@ -109,6 +109,7 @@ $default-margin: 1rem;
       text-align: left;
       color: $white-color;
       font-weight: 400;
+      margin-bottom: -8px;
     }
   }
 
