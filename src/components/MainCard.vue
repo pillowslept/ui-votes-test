@@ -180,4 +180,19 @@ export default {
   }
 }
 
+@media (max-width: 400px) {
+  .opinion {
+    .wiki, .veredict {
+      font-size: 12px !important;
+    }
+  }
+
+  .description {
+    .detail {
+      font-size: 10px;
+    }
+  }
+}
+
+
 </style>

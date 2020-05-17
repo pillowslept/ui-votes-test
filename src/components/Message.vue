@@ -88,10 +88,26 @@ img {
 @media (max-width: 700px) {
   .message {
     flex-direction: column;
+
+    .title {
+      width: 50%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   .description {
     width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .message {
+    .title {
+      width: 90%;
+    }
   }
 }
 </style>

@@ -45,6 +45,7 @@ export default {
 @media (max-width: 950px) {
   .content {
     .title-separator {
+      font-size: 30px;
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
     }

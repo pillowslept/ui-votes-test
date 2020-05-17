@@ -21,10 +21,13 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
+  font-size: 12px;
+  color: #333333;
+  font-weight: 300;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px dashed gray;
+  border-top: 1px dashed #979797;
   padding: 2rem 0px;
   margin-top: 1rem;
 }

@@ -44,6 +44,7 @@ export default {
 }
 
 .button-action {
+  font-weight: bold;
   padding: 10px 25px;
 }
 
