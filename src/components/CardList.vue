@@ -43,7 +43,7 @@ export default {
         dislikes: 36,
         cover: 'malala.png',
       },
-    }
+    };
   },
   components: {
     CardListItem,
