@@ -22,7 +22,7 @@ export default {
 @import '@/styles/colors.scss';
 
 .submit {
-  background: url('../assets/icons/banner-layer.png') no-repeat;
+  background: url('../assets/layer/banner-layer.png') no-repeat;
   background-position: center;
   background-size: auto auto;
 }
