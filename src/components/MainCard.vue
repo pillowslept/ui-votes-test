@@ -17,7 +17,6 @@
           What's your veredict
         </div>
       </div>
-
     </div>
     <div class="actions">
       <div class="action primary">
@@ -40,9 +39,10 @@ export default {
 
 .main-card {
   color: white;
-  background-image: linear-gradient(0deg, rgba(51,51,51,0) 0%, rgba(51,51,51,0.5294117647058824) 100%);
   margin-top: 6rem;
   width: 50%;
+  background-color: #4E4C4D;
+  opacity: 0.7;
 }
 
 .description {
