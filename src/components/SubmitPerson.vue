@@ -1,9 +1,11 @@
 <template>
   <div class="submit">
-    <div class="description">
-      Is there anyone else you would want us to add?
+    <div class="informaiton-content">
+      <div class="description">
+        Is there anyone else you would want us to add?
+      </div>
+      <div class="button-action">Submit a Name</div>
     </div>
-    <div class="button-action">Submit a Name</div>
   </div>
 </template>
 
@@ -19,12 +21,18 @@ export default {
 <style lang="scss" scoped>
 .submit {
   background: url('../assets/icons/banner-layer.png') no-repeat;
-  background-size: inherit;
-  padding: 1rem;
+  background-position: center;
+  background-size: auto auto;
+}
+
+.informaiton-content {
+  padding: 0.5rem 1rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #333333;
+  height: 100%;
+  background-color: #ffffff;
+  opacity: 0.8;
 }
 
 .description {
@@ -34,5 +42,9 @@ export default {
   font-weight: 300;
   text-align: left;
   color: #333333;
+}
+
+.button-action {
+  padding: 10px 25px;
 }
 </style>

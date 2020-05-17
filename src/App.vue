@@ -48,7 +48,6 @@ a {
 
 .button-action {
   cursor: pointer;
-  padding: 1rem 2rem;
   font-size: 20px;
   color: #333333;
   font-weight: 400;

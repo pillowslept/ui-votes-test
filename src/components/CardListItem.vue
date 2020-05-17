@@ -1,13 +1,15 @@
 <template>
   <div class="person-card" :style="backgroundUrl">
     <div class="card-content">
-      <div class="actual-vote primary">
-        <img alt="Up" src="../assets/icons/thumbs-up.png" >
-      </div>
-      <div class="information">
+      <div class="top-data">
+        <div class="actual-vote primary">
+          <img alt="Up" src="../assets/icons/thumbs-up.png" >
+        </div>
         <div class="name">
           {{ person.name }}
         </div>
+      </div>
+      <div class="information">
         <div class="subtitle">
           <b>1 Month ago</b> in {{ person.area }}
         </div>
@@ -15,7 +17,7 @@
           Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aen
         </div>
         <div class="actions">
-          <div class="button-vote primary">
+          <div class="active button-vote primary">
             <img alt="Up" src="../assets/icons/thumbs-up.png" >
           </div>
           <div class="button-vote secondary">
@@ -52,6 +54,7 @@ export default {
 
 <style lang="scss" scoped>
 $icon-size: 40px;
+$default-margin: 1rem;
 
 .person-card {
   min-height: 550px;
@@ -62,28 +65,38 @@ $icon-size: 40px;
 
 .card-content {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  width: 90%;
 
-  .actual-vote {
-    width: $icon-size;
-    padding: 3px 0px;
+  .top-data {
+    display: flex;
 
-    img {
-      width: 25px;
-      height: 25px;
+    .actual-vote {
+      width: $icon-size;
+      padding: 3px 0px;
+      align-self: flex-end;
+
+      img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    .name {
+      font-size: 45px;
+      width: calc(100% - #{$icon-size});
+      margin-left: 1rem;
+      text-align: left;
+      color: #ffffff;
+      font-weight: 400;
     }
   }
 
   .information {
-    width: calc(100% - $icon-size);
-    margin-left: 1rem;
+    width: 90%;
+    margin-top: 1rem;
+    margin-left: calc(#{$default-margin} + #{$icon-size});
     text-align: left;
-
-    .name {
-      font-size: 45px;
-      color: #ffffff;
-      font-weight: 400;
-    }
 
     .subtitle {
       color: #ffffff;
@@ -145,6 +158,11 @@ $icon-size: 40px;
       width: 25px;
       height: 25px;
     }
+
+    &.active {
+      border: 2px solid #fffffF;
+    }
+
   }
 }
 
@@ -153,6 +171,7 @@ $icon-size: 40px;
   padding: 0.4rem 1rem;
   color: #ffffff;
   border-color: #ffffff;
+  border-width: 1px;
 }
 
 </style>
