@@ -20,38 +20,40 @@
 
 ### user
 
+* Requires Authorization as a header (String for test purposes)
+
 ```
-{host}/api/user *GET*
+/api/user *GET*
 ```
 
 ```
-{host}/api/user/:id *GET*
+/api/user/:id *GET*
 ```
 
 ```
-{host}/api/user *POST*
+/api/user *POST*
 ```
 
 ```
-{host}/api/user/login *POST*
+/api/user/login *POST*
 ```
 
 ```
-{host}/api/user/:id *PUT*
+/api/user/:id *PUT*
 ```
 
 ### vote
 
 ```
-{host}/api/vote *GET*
+/api/vote *GET*
 ```
 
 ```
-{host}/api/vote/user/:useId *GET*
+/api/vote/user/:useId *GET*
 ```
 
 ```
-{host}/api/user *POST*
+/api/vote *POST*
 ```
 
 ## Author
