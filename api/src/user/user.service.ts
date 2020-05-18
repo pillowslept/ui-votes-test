@@ -54,6 +54,7 @@ export class UserService {
     }
 
     return {
+      id: userEntity.id,
       token: AUTH_TOKEN,
       email: userEntity.email,
     };
@@ -73,6 +74,7 @@ export class UserService {
     await this.userRepository.save(userEntity);
 
     return {
+      id: userEntity.id,
       token: AUTH_TOKEN,
       email: userEntity.email,
     };

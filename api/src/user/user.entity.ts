@@ -6,7 +6,7 @@ export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 100 })
+  @Column({ length: 100, select: false })
   password: string;
 
   @Column({ length: 80 })
