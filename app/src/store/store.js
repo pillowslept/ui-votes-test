@@ -10,14 +10,10 @@ const store = new Vuex.Store({
   state: {
     user: {},
     votes: {},
-    userVotes: [],
   },
   getters: {
     getVotes(state) {
       return state.votes;
-    },
-    getuserVotes(state) {
-      return state.userVotes;
     },
     isLogged(state) {
       return !!state.user.token && !!state.user.email;
@@ -31,17 +27,21 @@ const store = new Vuex.Store({
         );
       }
     },
-    addLike(state, { id, data }) {
+    addLike(state, id) {
       const votes = state.votes[id] || { likes: 0, dislikes: 0 };
       votes.likes = votes.likes + 1;
-      state.votes[id] = votes;
-      state.userVotes = [...state.userVotes, data.data];
+      state.votes = {
+        ...state.votes,
+        [id]: votes,
+      };
     },
-    addDislike(state, { id, data }) {
+    addDislike(state, id) {
       const votes = state.votes[id] || { likes: 0, dislikes: 0 };
       votes.dislikes = votes.dislikes + 1;
-      state.votes[id] = votes;
-      state.userVotes = [...state.userVotes, data.data];
+      state.votes = {
+        ...state.votes,
+        [id]: votes,
+      };
     },
     register(state, data) {
       state.user = { ...data.data };
@@ -51,9 +51,23 @@ const store = new Vuex.Store({
     },
     logout(state) {
       state.user = {};
+      state.votes = {};
     },
     setUserVotes(state, data) {
-      state.userVotes = [...data.data];
+      const votes = {};
+      data.data.forEach(({ personId, voteType }) => {
+        if (!votes[personId]) {
+          votes[personId] = {
+            likes: 0,
+            dislikes: 0,
+          };
+        }
+
+        const vote = votes[personId];
+        const type = voteType === 'Like' ? 'likes' : 'dislikes';
+        vote[type] = vote[type] + 1;
+      });
+      state.votes = votes;
     },
   },
   actions: {
@@ -61,8 +75,8 @@ const store = new Vuex.Store({
       axios
         .post(`${api}/vote`, { personId: id, voteType: 'Like', userId: this.state.user.id },
           { headers: { Authorization: this.state.user.token } })
-        .then(({ data }) => {
-          context.commit('addLike', { id, data });
+        .then(() => {
+          context.commit('addLike', id);
         })
         .catch(error => (console.log(error)));
     },
@@ -70,8 +84,8 @@ const store = new Vuex.Store({
       axios
         .post(`${api}/vote`, { personId: id, voteType: 'Dislike', userId: this.state.user.id },
           { headers: { Authorization: this.state.user.token } })
-        .then(({ data }) => {
-          context.commit('addDislike', { id, data });
+        .then(() => {
+          context.commit('addDislike', id);
         })
         .catch(error => (console.log(error)));
     },

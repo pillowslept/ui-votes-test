@@ -61,7 +61,7 @@
         <div v-else class="login-message">
           Login or register to start voting
         </div>
-        <div v-if="!canAddMore" class="cant-vote">
+        <div v-if="!canAddMore && isLogged" class="cant-vote">
           You can't vote for this person
         </div>
       </div>
@@ -91,7 +91,7 @@ export default {
   },
   computed: {
     canAddMore() {
-      return this.getuserVotes.filter(({ personId }) => personId === this.person.id).length < 3;
+      return (this.userLikes + this.userDislikes) < 3;
     },
     userVotes() {
       return this.getVotes[this.person.id] || {};
@@ -126,7 +126,7 @@ export default {
     dislikesPercent() {
       return ((100 * this.dislikes) / this.totalVotes).toFixed(1);
     },
-    ...mapGetters(['getVotes', 'isLogged', 'getuserVotes'])
+    ...mapGetters(['getVotes', 'isLogged'])
   },
   props: {
     person: Object,
