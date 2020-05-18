@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   name: 'default',
-  type: process.env.DATABASE_PROVIDER,
+  type: process.env.DATABASE_PROVIDER || 'mysql',
   host: process.env.DATABASE_HOST,
   port: process.env.DATABASE_PORT,
   username: process.env.DATABASE_USERNAME,
