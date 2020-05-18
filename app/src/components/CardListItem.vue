@@ -50,6 +50,7 @@
               <BaseImage title="Down" icon="thumbs-down" />
             </div>
             <div
+              v-if="canAddMore"
               class="button-action"
               @click="addVote"
             >
@@ -59,6 +60,9 @@
         </div>
         <div v-else class="login-message">
           Login or register to start voting
+        </div>
+        <div v-if="!canAddMore" class="cant-vote">
+          You can't vote for this person
         </div>
       </div>
     </div>
@@ -86,6 +90,9 @@ export default {
     };
   },
   computed: {
+    canAddMore() {
+      return this.getuserVotes.filter(({ personId }) => personId === this.person.id).length < 3;
+    },
     userVotes() {
       return this.getVotes[this.person.id] || {};
     },
@@ -119,7 +126,7 @@ export default {
     dislikesPercent() {
       return ((100 * this.dislikes) / this.totalVotes).toFixed(1);
     },
-    ...mapGetters(['getVotes', 'isLogged'])
+    ...mapGetters(['getVotes', 'isLogged', 'getuserVotes'])
   },
   props: {
     person: Object,
@@ -268,7 +275,7 @@ $default-margin: 1rem;
   }
 }
 
-.login-message {
+.login-message, .cant-vote {
   margin-top: 1rem;
   color: $white-color;
 }

@@ -10,10 +10,14 @@ const store = new Vuex.Store({
   state: {
     user: {},
     votes: {},
+    userVotes: [],
   },
   getters: {
     getVotes(state) {
       return state.votes;
+    },
+    getuserVotes(state) {
+      return state.userVotes;
     },
     isLogged(state) {
       return !!state.user.token && !!state.user.email;
@@ -27,15 +31,17 @@ const store = new Vuex.Store({
         );
       }
     },
-    addLike(state, id) {
+    addLike(state, { id, data }) {
       const votes = state.votes[id] || { likes: 0, dislikes: 0 };
       votes.likes = votes.likes + 1;
       state.votes[id] = votes;
+      state.userVotes = [...state.userVotes, data.data];
     },
-    addDislike(state, id) {
+    addDislike(state, { id, data }) {
       const votes = state.votes[id] || { likes: 0, dislikes: 0 };
       votes.dislikes = votes.dislikes + 1;
       state.votes[id] = votes;
+      state.userVotes = [...state.userVotes, data.data];
     },
     register(state, data) {
       state.user = { ...data.data };
@@ -46,13 +52,28 @@ const store = new Vuex.Store({
     logout(state) {
       state.user = {};
     },
+    setUserVotes(state, data) {
+      state.userVotes = [...data.data];
+    },
   },
   actions: {
     addLike(context, id) {
-      context.commit('addLike', id);
+      axios
+        .post(`${api}/vote`, { personId: id, voteType: 'Like', userId: this.state.user.id },
+          { headers: { Authorization: this.state.user.token } })
+        .then(({ data }) => {
+          context.commit('addLike', { id, data });
+        })
+        .catch(error => (console.log(error)));
     },
     addDislike(context, id) {
-      context.commit('addDislike', id);
+      axios
+        .post(`${api}/vote`, { personId: id, voteType: 'Dislike', userId: this.state.user.id },
+          { headers: { Authorization: this.state.user.token } })
+        .then(({ data }) => {
+          context.commit('addDislike', { id, data });
+        })
+        .catch(error => (console.log(error)));
     },
     logout(context) {
       context.commit('logout');
@@ -62,6 +83,7 @@ const store = new Vuex.Store({
         .post(`${api}/user/login`, dataLogin)
         .then(({ data }) => {
           context.commit('login', data);
+          context.dispatch('getActualVotes');
         })
         .catch(error => (console.log(error)));
     },
@@ -70,6 +92,14 @@ const store = new Vuex.Store({
         .post(`${api}/user`, dataRegister)
         .then(({ data }) => {
           context.commit('register', data);
+        })
+        .catch(error => (console.log(error)));
+    },
+    getActualVotes(context) {
+      axios
+        .get(`${api}/vote/user/${this.state.user.id}`, { headers: { Authorization: this.state.user.token } })
+        .then(({ data }) => {
+          context.commit('setUserVotes', data);
         })
         .catch(error => (console.log(error)));
     },
