@@ -4,7 +4,8 @@
     <div class="menu-actions">
       <router-link to="/past-trials">Past trials</router-link>
       <router-link to="/about">How It Works</router-link>
-      <router-link to="/login">Log In / Sign Up</router-link>
+      <router-link v-if="!isLogged" to="/login">Log In / Sign Up</router-link>
+      <a class="pointer" v-if="isLogged" @click="logout">Log Out</a>
       <BaseImage class="pointer" title="Search" icon="search" />
     </div>
   </div>
@@ -12,9 +13,18 @@
 
 <script>
 import BaseImage from '@/components/BaseImage';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'TheHeader',
+  computed: {
+    ...mapGetters(['isLogged'])
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
+    },
+  },
   components: {
     BaseImage,
   }

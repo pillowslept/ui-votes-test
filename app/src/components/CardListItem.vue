@@ -27,7 +27,7 @@
             </span>
           </transition>
         </div>
-        <div class="actions">
+        <div class="actions" v-if="isLogged">
           <template v-if="voted">
             <div
               class="button-action voted-button"
@@ -56,6 +56,9 @@
               Vote now
             </div>
           </template>
+        </div>
+        <div v-else class="login-message">
+          Login or register to start voting
         </div>
       </div>
     </div>
@@ -116,7 +119,7 @@ export default {
     dislikesPercent() {
       return ((100 * this.dislikes) / this.totalVotes).toFixed(1);
     },
-    ...mapGetters(['getVotes'])
+    ...mapGetters(['getVotes', 'isLogged'])
   },
   props: {
     person: Object,
@@ -262,8 +265,12 @@ $default-margin: 1rem;
     &.active {
       border: 2px solid $white-color;
     }
-
   }
+}
+
+.login-message {
+  margin-top: 1rem;
+  color: $white-color;
 }
 
 @media (max-width: 1100px) {
