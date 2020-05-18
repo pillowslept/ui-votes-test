@@ -1,35 +1,20 @@
 # ui-votes-test
 
-This branch contains:
+## This branch contains
 
-* Home design
-* Interactive votes for the cards
-* Style adjustments
-* Communication with store (Using Vuex)
-* Initial data loaded from JSON file.
+* Web application developed using VueJS.
+* Backend application developed using NestJS.
 
-## Project setup
-```
-npm install
-```
+# Considerations
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## /api
+* Create a file at root directory called .env
+* Create a MySQL database
+* Configure at the .env file the next database properties: name, port, username and password.
+* For the example: PORT = 3000, PREFIX = 'api' and DATABASE_PROVIDER = 'mysql'
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## /app
+* For the communication with the API the base URL is = 'http://localhost:3000/api'
 
 ## Author
 

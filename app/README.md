@@ -2,11 +2,9 @@
 
 This branch contains:
 
-* Home design
-* Interactive votes for the cards
-* Style adjustments
-* Communication with store (Using Vuex)
-* Initial data loaded from JSON file.
+* All of the exercise including interaction with API.
+* Maximum 3 votes per person card.
+* Integration with backend API and Vuex Store.
 
 ## Project setup
 ```
