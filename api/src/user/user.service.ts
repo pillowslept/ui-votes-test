@@ -59,7 +59,7 @@ export class UserService {
     };
   }
 
-  async create(userDto: UserDto): Promise<UserEntity> {
+  async create(userDto: UserDto): Promise<any> {
     if (!userDto.email || !userDto.age || !userDto.marriageStatus || !userDto.password) {
       throw new BadRequestException(MISSING_FIELDS);
     }
@@ -72,7 +72,10 @@ export class UserService {
     const userEntity: UserEntity = await this.userRepository.create(userDto);
     await this.userRepository.save(userEntity);
 
-    return userEntity;
+    return {
+      token: AUTH_TOKEN,
+      email: userEntity.email,
+    };
   }
 
   async update(id: number, userDto: UserDto): Promise<UserEntity> {

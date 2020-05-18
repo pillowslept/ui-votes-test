@@ -17,6 +17,7 @@ export class UserModule implements NestModule {
       .apply(LoggerMiddleware)
       .exclude(
         { path: 'user/login', method: RequestMethod.POST },
+        { path: 'user', method: RequestMethod.POST },
       )
       .forRoutes(UserController);
   }
